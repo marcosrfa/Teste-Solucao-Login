@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Login:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="txtLogin" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Senha:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" id="txtSenha" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col">
+                <button class="btn" id="btnLogin">Login</button>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnLogin").click(function () {
+                //Carrega o valor dos controles
+                var login = $("#txtLogin").val();
+                var senha = $("#txtSenha").val();
+
+                //Verifica se foram preenchidos
+                if (!login || !senha) {
+                    alert('Informe Login e Senha!!');
+                    return;
+                }
+
+                //Carrega o JSON com os dados de Login
+                var body = {
+                    Login: login,
+                    Senha: senha
+                }
+
+                //Faz a chamada assincrona para a API que irá validar se a senha informada corresponde a senha armazenada na base de dados
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    url: "/api/Login",
+                    contentType: "application/json",
+                    data: JSON.stringify(body),
+                    success: function (data) {
+                        alert("Sucesso!!! Usuário logado: " + data);
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    },
+                });
+            })
+        });
+    </script>
+</body>
+</html>
