@@ -1,4 +1,4 @@
-Oportunidade de trabalho ViaVarejo
+Solução de Login
 ===========================================
 
 Construir tela de login.
@@ -17,11 +17,19 @@ Usuários criados
 ===========================================
 
 marcos -> 123456
+
 teste1 -> abcdef
+
 teste2 -> 112233
+
 teste3 -> ffgghh
+
 teste4 -> senha4
+
 teste5 -> senha5
+
 teste6 -> senha6
+
 teste7 -> senha7
+
 teste8 -> senha8
